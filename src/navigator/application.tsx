@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
   },
-  safe: { flex: 1, backgroundColor: '#000000' },
+  safe: { flex: 1 },
 });
 
 export default ApplicationNavigator;
