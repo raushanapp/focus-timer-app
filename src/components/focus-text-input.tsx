@@ -1,13 +1,14 @@
 import React from 'react';
-import { View, TextInput, StyleSheet, TextInputProps } from 'react-native';
+import { View, StyleSheet, TextInputProps } from 'react-native';
 import { colors, fontSizes } from '@/theme/theme';
+import { TextInput } from 'react-native-paper';
 
 const FocusTextInput: React.FC<TextInputProps> = ({ value, onChangeText }) => {
   return (
     <View style={styles.conatiner}>
       <TextInput
         style={styles.textInputs}
-        placeholder="What would like to focus on"
+        label="What would like to focus on"
         value={value}
         onChangeText={onChangeText}
       />
@@ -21,15 +22,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   textInputs: {
-    padding: 16,
-    color: colors.white,
+    color: colors.light,
     borderRadius: 12,
     backgroundColor: 'transparent',
-    borderWidth: 1,
-    borderColor: colors.grey1,
     fontSize: fontSizes.md,
     fontFamily: 'System',
-    fontWeight: '500',
+    fontWeight: '700',
   },
 });
 

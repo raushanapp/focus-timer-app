@@ -1,14 +1,15 @@
 import React from 'react';
 import ApplicationNavigator from '@/navigator/application';
-import { StatusBar, useColorScheme, View } from 'react-native';
+import { Platform, StatusBar, useColorScheme, View } from 'react-native';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'light';
+  const isDarkMode = useColorScheme() === 'dark';
   console.log('isDarkMode', isDarkMode);
 
   const backgroundStyle = {
     backgroundColor: isDarkMode ? '#000000' : '#ffffff',
     flex: 1,
+    padding: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
   };
 
   return (

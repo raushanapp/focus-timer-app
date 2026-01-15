@@ -11,21 +11,22 @@ export const createStyles = <T extends NamedStyles<T>>(
 // Common shared utilities
 export const spacing = {
   xs: 4,
-  sm: 8,
-  md: 12,
-  lg: 16,
-  xl: 20,
-  xxl: 24,
+  sm: 12,
+  md: 16,
+  lg: 24,
+  xl: 32,
+  xxl: 40,
+  xxxl: 48,
 };
 
 export const fontSizes = {
-  xs: 10,
+  xs: 4,
   sm: 12,
   md: 16,
-  lg: 20,
-  xl: 24,
-  xxl: 30,
-  xxxl: 36,
+  lg: 24,
+  xl: 32,
+  xxl: 40,
+  xxxl: 48,
 };
 
 export const colors = {
@@ -46,22 +47,22 @@ export const colors = {
 
 export const typography = {
   h1: {
-    fontSize: 28,
+    fontSize: fontSizes.xl,
     fontWeight: '700',
     lineHeight: 34,
   } as TextStyle,
   h2: {
-    fontSize: 24,
+    fontSize: fontSizes.lg,
     fontWeight: '700',
     lineHeight: 30,
   } as TextStyle,
   body: {
-    fontSize: 16,
+    fontSize: fontSizes.md,
     fontWeight: '400',
     lineHeight: 24,
   } as TextStyle,
   small: {
-    fontSize: 12,
+    fontSize: fontSizes.sm,
     fontWeight: '400',
     lineHeight: 18,
   } as TextStyle,
@@ -74,4 +75,5 @@ export const flexUtils = {
     alignItems: 'center',
   } as ViewStyle,
   around: { justifyContent: 'space-around', alignItems: 'center' } as ViewStyle,
+  row: { flexDirection: 'row' } as ViewStyle,
 };
