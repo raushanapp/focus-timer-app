@@ -1,34 +1,47 @@
 import React from 'react';
-import { View, StyleSheet, TextInputProps } from 'react-native';
-import { colors, fontSizes } from '@/theme/theme';
+import { View } from 'react-native';
 import { TextInput } from 'react-native-paper';
+import useStyles from '@/hooks/theme/useStyes';
 
-const FocusTextInput: React.FC<TextInputProps> = ({ value, onChangeText }) => {
+interface FocusTextInputProps {
+  value: string;
+  onChangeText: (text: string) => void;
+}
+
+const FocusTextInput: React.FC<FocusTextInputProps> = ({
+  value,
+  onChangeText,
+}) => {
+  const { styles, theme } = useStyles(t => ({
+    container: {
+      ...t.layout.fill,
+      justifyContent: 'center',
+    },
+    textInput: {
+      // Set to transparent so the parent's glass effect shows
+      backgroundColor: 'transparent',
+      fontSize: 18,
+      fontWeight: '600',
+    },
+  }));
+
   return (
-    <View style={styles.conatiner}>
+    <View style={styles.container}>
       <TextInput
-        style={styles.textInputs}
-        label="What would like to focus on"
+        style={styles.textInput}
+        placeholder="What would you like to focus on?"
+        placeholderTextColor="rgba(255, 255, 255, 0.5)"
         value={value}
         onChangeText={onChangeText}
+        textColor={theme.colors.text}
+        mode="flat"
+        underlineColor="transparent"
+        activeUnderlineColor="transparent"
+        selectionColor={theme.colors.primary}
+        numberOfLines={1}
       />
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  conatiner: {
-    flex: 1,
-    justifyContent: 'center',
-  },
-  textInputs: {
-    color: colors.light,
-    borderRadius: 12,
-    backgroundColor: 'transparent',
-    fontSize: fontSizes.md,
-    fontFamily: 'System',
-    fontWeight: '700',
-  },
-});
 
 export default FocusTextInput;

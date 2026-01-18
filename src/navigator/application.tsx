@@ -4,7 +4,7 @@ import {
   TransitionPresets,
 } from '@react-navigation/stack';
 import { NavigationContainer, DarkTheme } from '@react-navigation/native';
-import { StatusBar, StyleSheet } from 'react-native';
+import { StatusBar } from 'react-native';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { BottomSheetModalProvider } from '@gorhom/bottom-sheet';
@@ -12,6 +12,7 @@ import { Dirs } from 'react-native-file-access';
 import { CacheManager } from '@georstat/react-native-image-cache';
 import { AppRoutes } from './navigation';
 import Home from '@/screens/home';
+import useStyles from '@/hooks/theme/useStyes';
 
 CacheManager.config = {
   baseDir: `${Dirs.CacheDir}/images_cache/`,
@@ -29,12 +30,18 @@ const Screens = [{ Home }];
 type Screen = keyof (typeof Screens)[0];
 
 const ApplicationNavigator = () => {
+  const { styles } = useStyles(t => ({
+    root: {
+      ...t.layout.fill,
+      // backgroundColor: t.colors.background,
+    },
+  }));
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView>
         <BottomSheetModalProvider>
           <NavigationContainer theme={DarkTheme}>
-            <SafeAreaView style={styles.safe}>
+            <SafeAreaView style={styles.root}>
               <StatusBar animated={true} barStyle={'light-content'} />
               <Stack.Navigator
                 screenOptions={{
@@ -64,12 +71,5 @@ const ApplicationNavigator = () => {
     </SafeAreaProvider>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-  safe: { flex: 1 },
-});
 
 export default ApplicationNavigator;
