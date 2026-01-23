@@ -13,6 +13,7 @@ import { CacheManager } from '@georstat/react-native-image-cache';
 import { AppRoutes } from './navigation';
 import Home from '@/screens/home';
 import useStyles from '@/hooks/theme/useStyes';
+import Focus from '@/screens/focus';
 
 CacheManager.config = {
   baseDir: `${Dirs.CacheDir}/images_cache/`,
@@ -26,14 +27,14 @@ CacheManager.config = {
 
 const Stack = createStackNavigator<AppRoutes>();
 
-const Screens = [{ Home }];
+const Screens = [{ Home }, { Focus }];
 type Screen = keyof (typeof Screens)[0];
 
 const ApplicationNavigator = () => {
   const { styles } = useStyles(t => ({
     root: {
       ...t.layout.fill,
-      // backgroundColor: t.colors.background,
+      backgroundColor: t.colors.background[1],
     },
   }));
   return (

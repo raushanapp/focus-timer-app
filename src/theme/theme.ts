@@ -11,6 +11,7 @@ export const palette = {
   purplePrimary: '#473472',
   purpleDark: '#1a1a2e',
   black: '#000',
+  green: '#08CB00',
 };
 
 export const spacing = {
@@ -30,14 +31,12 @@ export const borderRadii = {
 };
 export const typography = {
   h1: {
-    fontSize: 32,
+    fontSize: 28,
     fontWeight: '700',
-    lineHeight: 40,
   },
   body: {
     fontSize: 16,
     fontWeight: '400',
-    lineHeight: 24,
   },
 };
 
@@ -49,6 +48,7 @@ export const theme = {
     glassBorder: palette.glassBorder,
     text: palette.white,
     black: palette.black,
+    green: palette.green,
   },
   spacing,
   borderRadii,
