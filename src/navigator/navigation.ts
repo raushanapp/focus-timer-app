@@ -9,5 +9,11 @@ export interface AppNavigationProps<RouteName extends keyof AppRoutes> {
 export type AppRoutes = {
   Home: undefined;
   Focus: undefined;
-  Countdown: undefined;
+  // Timer: {
+  //   minutes: number;
+  //   isPaused: boolean;
+  //   onProgress: () => void;
+  //   onEnd: () => void;
+  // };
+  Timer: undefined;
 };

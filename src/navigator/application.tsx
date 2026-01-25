@@ -14,6 +14,7 @@ import { AppRoutes } from './navigation';
 import Home from '@/screens/home';
 import useStyles from '@/hooks/theme/useStyes';
 import Focus from '@/screens/focus';
+import Timer from '@/screens/timer';
 
 CacheManager.config = {
   baseDir: `${Dirs.CacheDir}/images_cache/`,
@@ -27,7 +28,7 @@ CacheManager.config = {
 
 const Stack = createStackNavigator<AppRoutes>();
 
-const Screens = [{ Home }, { Focus }];
+const Screens = [{ Home }, { Focus }, { Timer }];
 type Screen = keyof (typeof Screens)[0];
 
 const ApplicationNavigator = () => {

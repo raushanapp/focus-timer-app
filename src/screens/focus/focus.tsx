@@ -5,8 +5,10 @@ import GradientBackground from '@/components/gradient-background-wrapper-compone
 import FocusTextInput from '@/components/focus-text-input';
 import RoundedButtonComponent from '@/components/rounded-button-component';
 import useStyles from '@/hooks/theme/useStyes';
+import RNBounceable from '@freakycoder/react-native-bounceable';
+import { AppNavigationProps } from '@/navigator/navigation';
 
-const Focus: React.FC = () => {
+const Focus = ({ navigation }: AppNavigationProps<'Focus'>) => {
   const [subject, setSubject] = React.useState<string>('');
   const [addCurentSubject, setAddCurrentSubject] = React.useState<string[]>([]);
 
@@ -16,10 +18,29 @@ const Focus: React.FC = () => {
       paddingTop: t.spacing.xl,
       gap: t.spacing.l,
     },
+    headerContainer: {
+      ...t.layout.spaceBetween,
+    },
+    backView: {
+      ...t.layout.center,
+      borderRadius: t.borderRadii.l,
+      paddingHorizontal: t.spacing.s,
+      paddingVertical: t.spacing.xs,
+      borderWidth: 1,
+      borderColor: t.colors.glassBorder,
+    },
+    backText: {
+      ...t.typography.body,
+      color: t.colors.text,
+      fontWeight: '600',
+      textAlign: 'center',
+      fontSize: 28,
+      transform: [{ rotate: '180deg' }],
+    },
     headingText: {
       ...t.typography.h1,
       color: t.colors.text,
-      fontWeight: '500',
+      fontSize: 28,
     },
     glassInputWrapper: {
       flexDirection: 'row',
@@ -52,7 +73,7 @@ const Focus: React.FC = () => {
       textAlign: 'center',
       fontWeight: '600',
     },
-  })) as unknown as { styles: Record<string, any> };
+  }));
 
   const handlePress = () => {
     if (subject) {
@@ -64,7 +85,15 @@ const Focus: React.FC = () => {
   return (
     <GradientBackground>
       <View style={styles.container}>
-        <Text style={styles.headingText}>Focus on Time</Text>
+        <View style={styles.headerContainer}>
+          <RNBounceable
+            style={styles.backView}
+            onPress={() => navigation.goBack()}
+          >
+            <Text style={styles.backText}>{'→'}</Text>
+          </RNBounceable>
+          <Text style={styles.headingText}>Focus on Time</Text>
+        </View>
 
         <View style={styles.glassInputWrapper}>
           <FocusTextInput value={subject ?? ''} onChangeText={setSubject} />

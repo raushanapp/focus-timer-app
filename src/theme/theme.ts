@@ -1,4 +1,5 @@
 import { layout } from '@/theme/layout';
+import { TextStyle } from 'react-native';
 export const palette = {
   glassWhite: 'rgba(255, 255, 255, 0.15)', // Glass effect base
   glassBorder: 'rgba(255, 255, 255, 0.3)',
@@ -29,9 +30,12 @@ export const borderRadii = {
   l: 12,
   xl: 24,
 };
-export const typography = {
+export const typography: {
+  h1: { fontSize: number; fontWeight?: TextStyle['fontWeight'] };
+  body: { fontSize: number; fontWeight?: TextStyle['fontWeight'] };
+} = {
   h1: {
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: '700',
   },
   body: {

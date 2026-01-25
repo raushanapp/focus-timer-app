@@ -36,9 +36,7 @@ const Home = ({ navigation }: AppNavigationProps<'Home'>) => {
     };
   });
 
-  const handleNavigateToScreen = (screenName: 'Focus' | 'Countdown') => {
-    // Navigation logic to navigate to the specified screen
-    console.log(`Navigating to ${screenName} screen`);
+  const handleNavigateToScreen = (screenName: 'Focus' | 'Timer') => {
     navigation.navigate(screenName);
   };
 
@@ -57,7 +55,7 @@ const Home = ({ navigation }: AppNavigationProps<'Home'>) => {
           </RNBounceable>
           <RNBounceable
             style={styles.buttonStyles}
-            onPress={() => handleNavigateToScreen('Countdown')}
+            onPress={() => handleNavigateToScreen('Timer')}
           >
             <Text style={styles.buttonText}>Count down</Text>
           </RNBounceable>
