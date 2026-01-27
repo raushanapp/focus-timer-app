@@ -1,5 +1,4 @@
 import React from 'react';
-
 import { View, Text } from 'react-native';
 import GradientBackground from '@/components/gradient-background-wrapper-component';
 import FocusTextInput from '@/components/focus-text-input';
