@@ -93,7 +93,6 @@ const Focus = ({ navigation }: AppNavigationProps<'Focus'>) => {
           </RNBounceable>
           <Text style={styles.headingText}>Focus on Time</Text>
         </View>
-
         <View style={styles.glassInputWrapper}>
           <FocusTextInput value={subject ?? ''} onChangeText={setSubject} />
           <RoundedButtonComponent
@@ -102,7 +101,6 @@ const Focus = ({ navigation }: AppNavigationProps<'Focus'>) => {
             size={45}
           />
         </View>
-
         {addCurentSubject.length > 0 && (
           <View style={styles.renderTextContainer}>
             <Text style={styles.renderText}>Things we've focused on</Text>

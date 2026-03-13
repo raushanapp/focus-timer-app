@@ -1,8 +1,6 @@
 import React from 'react';
-
 import { View, Text } from 'react-native';
 import GradientBackground from '@/components/gradient-background-wrapper-component';
-
 import useStyles from '@/hooks/theme/useStyes';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import { AppNavigationProps } from '@/navigator/navigation';
