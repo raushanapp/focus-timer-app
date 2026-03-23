@@ -1,16 +1,22 @@
 import React from 'react';
 import ApplicationNavigator from '@/navigator/application';
-import { StatusBar, useColorScheme } from 'react-native';
+import { StatusBar, Platform } from 'react-native';
+import { palette } from '@/theme/theme';
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-  console.log(isDarkMode);
+  React.useEffect(() => {
+    // iOS: Set status bar appearance
+    if (Platform.OS === 'ios') {
+      StatusBar.setBarStyle('light-content');
+    }
+  }, []);
 
   return (
     <>
       <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor="transparent"
+        barStyle="light-content"
+        backgroundColor={palette.purpleDeep}
+        translucent={false}
       />
       <ApplicationNavigator />
     </>

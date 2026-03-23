@@ -4,6 +4,9 @@
     <style name="AppTheme" parent="Theme.AppCompat.DayNight.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="android:editTextBackground">@drawable/rn_edit_text_material</item>
+        <!-- Set status bar color to match app background -->
+        <item name="android:statusBarColor">#0F0C29</item>
+        <item name="android:windowLightStatusBar">false</item>
     </style>
 
 </resources>

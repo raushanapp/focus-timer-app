@@ -17,8 +17,8 @@ const GradientBackground = ({ children }: GradientBackgroundProps) => {
   return (
     <LinearGradient
       colors={theme.colors.background}
-      start={{ x: 0, y: 0 }}
-      end={{ x: 1, y: 1 }}
+      start={{ x: 1, y: 0 }}
+      end={{ x: 0, y: 1 }}
       style={styles.gradient}
     >
       {children}
