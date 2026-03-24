@@ -65,11 +65,21 @@ const Timer = ({ navigation, route }: AppNavigationProps<'Timer'>) => {
     buttonContainer: {
       ...t.layout.center,
     },
+    focusingContainer: {
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    title: {
+      fontSize: 24,
+      fontWeight: 700,
+      color: t.colors.text,
+    },
+    task: {
+      fontSize: 20,
+      fontWeight: 500,
+      color: t.colors.text,
+    },
   }));
-
-  console.log('====================================');
-  console.log(currentSubject);
-  console.log('====================================');
 
   return (
     <GradientBackground>
@@ -91,6 +101,11 @@ const Timer = ({ navigation, route }: AppNavigationProps<'Timer'>) => {
             onProgress={() => {}}
             minutes={0.1}
           />
+        </View>
+        {/* Focusing container */}
+        <View style={styles.focusingContainer}>
+          <Text style={styles.title}>Focusing on :</Text>
+          <Text style={styles.task}>{currentSubject}</Text>
         </View>
         {/* start button */}
         <View style={styles.buttonContainer}>
