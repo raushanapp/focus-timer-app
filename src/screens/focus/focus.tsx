@@ -79,6 +79,7 @@ const Focus = ({ navigation }: AppNavigationProps<'Focus'>) => {
       setAddCurrentSubject(prev => [...prev, subject]);
     }
     setSubject('');
+    navigation.navigate('Timer', { currentSubject: subject });
   };
 
   return (

@@ -1,5 +1,5 @@
 import { ViewStyle } from 'react-native';
-import { spacing } from '@/theme/theme';
+import { spacing } from '@/theme/spacing';
 export const layout: Record<string, ViewStyle> = {
   row: {
     flexDirection: 'row',
@@ -13,6 +13,15 @@ export const layout: Record<string, ViewStyle> = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
+  } as ViewStyle,
+  spaceBetweenColumn: {
+    flexDirection: 'column',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  } as ViewStyle,
+  flexStart: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
   } as ViewStyle,
   fill: {
     flex: 1,

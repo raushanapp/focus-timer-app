@@ -4,15 +4,22 @@ import GradientBackground from '@/components/gradient-background-wrapper-compone
 import useStyles from '@/hooks/theme/useStyes';
 import RNBounceable from '@freakycoder/react-native-bounceable';
 import { AppNavigationProps } from '@/navigator/navigation';
+import CountDownComponent from '@/components/count-down-component';
+import RoundedButtonComponent from '@/components/rounded-button-component';
 
-const Timer = ({ navigation }: AppNavigationProps<'Timer'>) => {
+const Timer = ({ navigation, route }: AppNavigationProps<'Timer'>) => {
+  const { currentSubject } = route.params;
+  const [isStarted, setIsStarted] = React.useState(false);
   const { styles } = useStyles(t => ({
     container: {
+      flex: 1,
       ...t.layout.screen,
+      // ...t.layout.spaceBetweenColumn,
       paddingTop: t.spacing.xl,
       gap: t.spacing.l,
     },
     headerContainer: {
+      // flex: 1,
       ...t.layout.spaceBetween,
     },
     backView: {
@@ -36,7 +43,33 @@ const Timer = ({ navigation }: AppNavigationProps<'Timer'>) => {
       color: t.colors.text,
       fontSize: 28,
     },
+    countDownContainer: {
+      // give enough space for the countdown text to render (small flex clipped it)
+      minHeight: 80,
+      width: '40%',
+      alignSelf: 'center',
+      ...t.layout.center,
+      backgroundColor: t.colors.glass,
+      borderRadius: t.borderRadii.l,
+      paddingHorizontal: 20,
+      paddingVertical: t.spacing.m,
+      justifyContent: 'center',
+      alignItems: 'center',
+    },
+    buttonStyle: {
+      backgroundColor: 'transparent',
+    },
+    buttonTextStyle: {
+      fontSize: 24,
+    },
+    buttonContainer: {
+      ...t.layout.center,
+    },
   }));
+
+  console.log('====================================');
+  console.log(currentSubject);
+  console.log('====================================');
 
   return (
     <GradientBackground>
@@ -49,6 +82,35 @@ const Timer = ({ navigation }: AppNavigationProps<'Timer'>) => {
             <Text style={styles.backText}>{'→'}</Text>
           </RNBounceable>
           <Text style={styles.headingText}>Count your Time</Text>
+        </View>
+        {/* import count Down container */}
+        <View style={styles.countDownContainer}>
+          <CountDownComponent
+            isPaused={!isStarted}
+            onEnd={() => {}}
+            onProgress={() => {}}
+            minutes={0.1}
+          />
+        </View>
+        {/* start button */}
+        <View style={styles.buttonContainer}>
+          {!isStarted ? (
+            <RoundedButtonComponent
+              btnTitle="Start"
+              size={100}
+              onPress={() => setIsStarted(true)}
+              style={styles.buttonStyle}
+              textStyle={styles.buttonTextStyle}
+            />
+          ) : (
+            <RoundedButtonComponent
+              btnTitle="Pause"
+              size={100}
+              onPress={() => setIsStarted(false)}
+              style={styles.buttonStyle}
+              textStyle={styles.buttonTextStyle}
+            />
+          )}
         </View>
       </View>
     </GradientBackground>

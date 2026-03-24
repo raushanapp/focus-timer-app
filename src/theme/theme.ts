@@ -1,5 +1,7 @@
 import { layout } from '@/theme/layout';
 import { TextStyle } from 'react-native';
+import { spacing } from '@/theme/spacing';
+
 export const palette = {
   glassWhite: 'rgba(255, 255, 255, 0.15)', // Glass effect base
   glassBorder: 'rgba(255, 255, 255, 0.3)',
@@ -13,15 +15,6 @@ export const palette = {
   purpleDark: '#1a1a2e',
   black: '#000',
   green: '#08CB00',
-};
-
-export const spacing = {
-  xs: 4,
-  s: 8,
-  m: 16,
-  l: 24,
-  xl: 32,
-  xxl: 40,
 };
 
 export const borderRadii = {

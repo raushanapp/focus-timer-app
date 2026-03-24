@@ -17,17 +17,19 @@ const CountDownComponent: React.FC<CountDownComponentProps> = ({
   onEnd,
 }) => {
   const interval = React.useRef<number | null>(null);
-  const [millis, setMillis] = React.useState<number | null>(null);
+  // initialize millis from minutes so the component can render a value immediately
+  const [millis, setMillis] = React.useState<number>(
+    UtilsMethods.minutesToMs(minutes),
+  );
 
   const countDown = React.useCallback(() => {
-    setMillis((time: number | null) => {
-      if (time === null) return time;
+    setMillis((time: number) => {
       if (time === 0) {
         if (interval.current) clearInterval(interval.current);
         onEnd?.();
         return time;
       }
-      const timeLeft = time - 1000;
+      const timeLeft = Math.max(0, time - 1000);
       return timeLeft;
     });
   }, [onEnd]);
@@ -37,7 +39,7 @@ const CountDownComponent: React.FC<CountDownComponentProps> = ({
   }, [minutes]);
 
   React.useEffect(() => {
-    onProgress?.(millis! / UtilsMethods.minutesToMs(minutes));
+    onProgress?.(millis / UtilsMethods.minutesToMs(minutes));
   }, [millis, minutes, onProgress]);
 
   React.useEffect(() => {
@@ -49,20 +51,21 @@ const CountDownComponent: React.FC<CountDownComponentProps> = ({
     return () => clearInterval(interval.current!);
   }, [countDown, isPaused]);
 
-  const minute = Math.floor((millis! / 1000 / 60) % 60);
-  const seconds = Math.floor((millis! / 1000) % 60);
+  const minute = Math.floor((millis / 1000 / 60) % 60);
+  const seconds = Math.floor((millis / 1000) % 60);
 
   const { styles } = useStyles(t => {
     return {
       textCountDown: {
         ...t.typography.h1,
+        color: t.colors.text,
+        textAlign: 'center',
       },
     };
   });
 
   return (
     <Text style={styles.textCountDown}>
-      {' '}
       {UtilsMethods.formateTime(minute)}:{UtilsMethods.formateTime(seconds)}
     </Text>
   );

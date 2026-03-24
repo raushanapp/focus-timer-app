@@ -15,5 +15,5 @@ export type AppRoutes = {
   //   onProgress: () => void;
   //   onEnd: () => void;
   // };
-  Timer: undefined;
+  Timer: { currentSubject: string };
 };

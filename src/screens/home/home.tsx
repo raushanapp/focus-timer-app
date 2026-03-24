@@ -9,6 +9,7 @@ const Home = ({ navigation }: AppNavigationProps<'Home'>) => {
     return {
       container: {
         ...t.layout.screen,
+        ...t.layout.flexStart,
         ...t.layout.gapL,
       },
       headingText: {
@@ -36,7 +37,7 @@ const Home = ({ navigation }: AppNavigationProps<'Home'>) => {
     };
   });
 
-  const handleNavigateToScreen = (screenName: 'Focus' | 'Timer') => {
+  const handleNavigateToScreen = (screenName: 'Focus') => {
     navigation.navigate(screenName);
   };
 
@@ -52,12 +53,6 @@ const Home = ({ navigation }: AppNavigationProps<'Home'>) => {
             onPress={() => handleNavigateToScreen('Focus')}
           >
             <Text style={styles.buttonText}>Add your focus subject</Text>
-          </RNBounceable>
-          <RNBounceable
-            style={styles.buttonStyles}
-            onPress={() => handleNavigateToScreen('Timer')}
-          >
-            <Text style={styles.buttonText}>Count down</Text>
           </RNBounceable>
         </View>
       </View>
