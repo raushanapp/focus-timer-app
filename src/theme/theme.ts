@@ -46,6 +46,7 @@ export const theme = {
     text: palette.white,
     black: palette.black,
     green: palette.green,
+    progress: palette.accent,
   },
   spacing,
   borderRadii,

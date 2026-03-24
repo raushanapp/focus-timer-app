@@ -6,10 +6,12 @@ import RNBounceable from '@freakycoder/react-native-bounceable';
 import { AppNavigationProps } from '@/navigator/navigation';
 import CountDownComponent from '@/components/count-down-component';
 import RoundedButtonComponent from '@/components/rounded-button-component';
+import { ProgressBar } from 'react-native-paper';
 
 const Timer = ({ navigation, route }: AppNavigationProps<'Timer'>) => {
   const { currentSubject } = route.params;
   const [isStarted, setIsStarted] = React.useState(false);
+  const [progress, setProgress] = React.useState(1);
   const { styles } = useStyles(t => ({
     container: {
       flex: 1,
@@ -79,6 +81,13 @@ const Timer = ({ navigation, route }: AppNavigationProps<'Timer'>) => {
       fontWeight: 500,
       color: t.colors.text,
     },
+    progress: {
+      color: t.colors.progress,
+    },
+    progressContainer: {
+      height: 10,
+      borderRadius: 3,
+    },
   }));
 
   return (
@@ -98,7 +107,7 @@ const Timer = ({ navigation, route }: AppNavigationProps<'Timer'>) => {
           <CountDownComponent
             isPaused={!isStarted}
             onEnd={() => {}}
-            onProgress={() => {}}
+            onProgress={p => setProgress(p)}
             minutes={0.1}
           />
         </View>
@@ -106,6 +115,15 @@ const Timer = ({ navigation, route }: AppNavigationProps<'Timer'>) => {
         <View style={styles.focusingContainer}>
           <Text style={styles.title}>Focusing on :</Text>
           <Text style={styles.task}>{currentSubject}</Text>
+        </View>
+
+        {/* Progress bar */}
+        <View>
+          <ProgressBar
+            progress={progress}
+            style={styles.progressContainer}
+            color={styles.progress.color}
+          />
         </View>
         {/* start button */}
         <View style={styles.buttonContainer}>

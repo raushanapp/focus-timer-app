@@ -12,6 +12,7 @@ import { Dirs } from 'react-native-file-access';
 import { CacheManager } from '@georstat/react-native-image-cache';
 import { AppRoutes } from './navigation';
 import Home from '@/screens/home';
+import { PaperProvider } from 'react-native-paper';
 import useStyles from '@/hooks/theme/useStyes';
 import Focus from '@/screens/focus';
 import Timer from '@/screens/timer';
@@ -42,32 +43,34 @@ const ApplicationNavigator = () => {
     <SafeAreaProvider>
       <GestureHandlerRootView>
         <BottomSheetModalProvider>
-          <NavigationContainer theme={DarkTheme}>
-            <SafeAreaView style={styles.root}>
-              <StatusBar animated={true} barStyle={'light-content'} />
-              <Stack.Navigator
-                screenOptions={{
-                  headerShown: false,
-                  ...TransitionPresets.SlideFromRightIOS,
-                  gestureEnabled: true,
-                }}
-              >
-                {Screens.map(item => {
-                  const [name, component] = Object.entries(item)[0] as [
-                    Screen,
-                    () => JSX.Element,
-                  ];
-                  return (
-                    <Stack.Screen
-                      key={name}
-                      name={name}
-                      component={component}
-                    />
-                  );
-                })}
-              </Stack.Navigator>
-            </SafeAreaView>
-          </NavigationContainer>
+          <PaperProvider>
+            <NavigationContainer theme={DarkTheme}>
+              <SafeAreaView style={styles.root}>
+                <StatusBar animated={true} barStyle={'light-content'} />
+                <Stack.Navigator
+                  screenOptions={{
+                    headerShown: false,
+                    ...TransitionPresets.SlideFromRightIOS,
+                    gestureEnabled: true,
+                  }}
+                >
+                  {Screens.map(item => {
+                    const [name, component] = Object.entries(item)[0] as [
+                      Screen,
+                      () => JSX.Element,
+                    ];
+                    return (
+                      <Stack.Screen
+                        key={name}
+                        name={name}
+                        component={component}
+                      />
+                    );
+                  })}
+                </Stack.Navigator>
+              </SafeAreaView>
+            </NavigationContainer>
+          </PaperProvider>
         </BottomSheetModalProvider>
       </GestureHandlerRootView>
     </SafeAreaProvider>
